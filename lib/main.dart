@@ -1,8 +1,13 @@
 import 'package:countries_info/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(PalotaCountriesAssessmentApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]).then((_) => runApp(PalotaCountriesAssessmentApp()));
 }
 
 class PalotaCountriesAssessmentApp extends StatelessWidget {
@@ -10,6 +15,7 @@ class PalotaCountriesAssessmentApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
