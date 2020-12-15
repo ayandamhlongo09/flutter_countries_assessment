@@ -35,9 +35,9 @@ class AppRoutes {
           settings: settings,
         );
       case countryDetail:
-        var country = settings.arguments;
+        // var country = settings.arguments;
         return MaterialPageRoute(
-          builder: (BuildContext context) => CountryDetailPage(country:country),
+          builder: (BuildContext context) => CountryDetailPage(),
           settings: settings,
         );
       default:

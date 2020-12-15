@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:countries_info/theme/colors.dart';
 
-class SearchBox extends StatefulWidget {
-  @override
-  _SearchBoxState createState() => _SearchBoxState();
-}
 
-class _SearchBoxState extends State<SearchBox> {
+class SearchBox extends StatelessWidget {
+
+  SearchBox({this.leadingIcon, this.trailingIcon, this.hintText, this.onChangedMethod, this.cancelMethod, this.textBoxController});
+
+  final Icon leadingIcon;
+  final Icon trailingIcon;
+  final String hintText;
+  final Function onChangedMethod;
+  final Function cancelMethod;
+  final TextEditingController textBoxController;
+
   @override
   Widget build(BuildContext context) {
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: new Card(
         child: new ListTile(
-          leading: new Icon(Icons.search),
+          leading: leadingIcon,
           title: new TextField(
+            controller: textBoxController,
+            onChanged: (value){
+              onChangedMethod(value);
+            },
             decoration: new InputDecoration(
-                hintText: 'Search Countries', border: InputBorder.none),
+                hintText: hintText, border: InputBorder.none),
           ),
-          trailing: new IconButton(
-            icon: new Icon(Icons.cancel),
+          trailing: FlatButton(
+            highlightColor: Colors.white,
+            splashColor: AppColors.mainAppColour,
+            color: Colors.white,
+            onPressed: (){
+              cancelMethod();
+            } ,
+            child: trailingIcon,
           ),
         ),
       ),

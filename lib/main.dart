@@ -1,6 +1,7 @@
 import 'package:countries_info/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:countries_info/theme/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,10 +19,10 @@ class PalotaCountriesAssessmentApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: AppColors.mainAppColour,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: AppRoutes.startUp,
+      initialRoute: AppRoutes.countries,
       onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
