@@ -1,4 +1,5 @@
 import 'package:countries_info/components/svgImage.dart';
+import 'package:countries_info/methods/api.dart';
 import 'package:countries_info/methods/functions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,28 +15,20 @@ class CountryDetailPage extends StatelessWidget {
 
     final Map country = ModalRoute.of(context).settings.arguments;
 
-    String getPath(int index, country){
 
-      print(country['borders']);
-      print(country['alpha3Code'] + "heeey");
-      // print(country['flag']);
-      // print(country);
 
-    String path = "https://restcountries.eu/data/ago.svg";
+    String getPath(int index){
+      List countryDetail = [];
 
-    // path = country['flag'].where((country) =>
-    //     country['borders'].equals(country['alpha3Code']))
-    //     .toList();
+      getCountryDetail(country['borders'][index]).then((data){
+        countryDetail =data;
+        print(data);
+      });
+      print(countryDetail);
 
-      // var aa = country['borders'].map((hey) {
-      //   if (country['alpha3Code'].contains(country['borders']))
-      //     return country['flag'];
-      // }).toList();
 
-    // Iterable e =country['borders'].map((a) =>country['alpha3Code'] );
-
-// print(aa);
-      return path;
+      
+      return "";
     }
 
     return Scaffold(
@@ -330,6 +323,7 @@ class CountryDetailPage extends StatelessWidget {
               itemCount: country['borders'].length,
               physics: ScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
+                // print(country['borders'][index]);
                 return Column(
                   children: [
                     Container(
@@ -339,7 +333,8 @@ class CountryDetailPage extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20.0),
                         child: SVGImage(
-                          path: getPath(index, country ),
+                          path:getPath(index )
+                          ,
                           width: 60,
                           padding: 12.0,
                         ),

@@ -22,7 +22,7 @@ class PalotaCountriesAssessmentApp extends StatelessWidget {
         primarySwatch: AppColors.mainAppColour,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: AppRoutes.countries,
+      initialRoute: AppRoutes.startUp,
       onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
